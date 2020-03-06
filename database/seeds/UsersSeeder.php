@@ -1,5 +1,7 @@
 <?php
 
+use App\User;
+
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -12,7 +14,7 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
+        User::create([
             'name' => 'Lara',
             'email' => 'malaracejas@gmail.com',
             'password' => 'laravel',
