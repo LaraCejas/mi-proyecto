@@ -14,10 +14,13 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
-            'name' => 'Lara',
+        factory(User::class)->create([
+            'name' => 'Lara Cejas',
             'email' => 'malaracejas@gmail.com',
             'password' => 'laravel',
+            'is_admin' => true,
         ]);
+
+        factory(User::class, 49)->create();
     }
 }

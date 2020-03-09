@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
 {
@@ -13,23 +15,23 @@ class UsersController extends Controller
 
     public function index()
     {
-        if(request()->has('empty')) {
-            $users = [];
-        } else {
-            $users=[
-                'Juan','Pedro','Agustina','Soledad',
-            ];
-        }
-        
+        $users = User::all();
 
         $title= 'Listado de usuarios';
 
-       return view('users', compact('title', 'users'));
+       return view('users.index', compact('title', 'users'));
     }
 
     public function show($id)
     {
-        return "Mostrar detalle de usuario: {$id}";
+        $user = User::find($id);
+        
+        return view('users.show', compact('user'));
+    }
+    
+    public function listaVacia()
+    {
+        return 'No hay usuarios registrados';
     }
 
     public function createUser()
