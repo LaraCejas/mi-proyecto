@@ -51,10 +51,34 @@ class UsersModuleTest extends TestCase
     }
 
     /** @test */
+    function it_display_a_404_error_if_the_user_is_not_found()
+    {
+        $this->get('/users/999')
+            ->assertStatus(404)
+            ->assertSee('Página no encontrada');
+    }
+
+    /** @test */
     function it_loads_the_new_users_page()
     {
         $this->get('/users/new')
             ->assertStatus(200)
             ->assertSee('Crear usuario nuevo');
+    }
+
+    //** @test */
+    function it_create_a_new_user()
+    {
+        $this->post('/users', [
+            'name' => 'Lara',
+            'email' => 'malaracejas@gmail.com',
+            'password' => 'laravel'
+        ])->assertRedirect('users');
+
+        $this->assertCredentials([
+            'name' => 'Lara',
+            'email' => 'malaracejas@gmail.com',
+            'password' => 'laravel',
+        ]);
     }
 }

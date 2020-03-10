@@ -22,20 +22,26 @@ class UsersController extends Controller
        return view('users.index', compact('title', 'users'));
     }
 
-    public function show($id)
+    public function show(User $user)
     {
-        $user = User::find($id);
-        
         return view('users.show', compact('user'));
     }
-    
-    public function listaVacia()
+
+    public function create()
     {
-        return 'No hay usuarios registrados';
+        return view('users.create');
     }
 
-    public function createUser()
+    public function store()
     {
-        return 'Crear usuario nuevo';
+        $data = request()->all();
+
+        User::create([
+            'name' => $data['name'],
+            'email' => $data ['email'],
+            'password' => bcrypt($data['password']),
+        ]);
+
+        return redirect()->route('users-index');
     }
 }

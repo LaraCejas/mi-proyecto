@@ -3,12 +3,15 @@
 
 Route::get('/', 'UsersController@home');
 
-Route::get('/users', 'UsersController@index');
+Route::get('/users', 'UsersController@index')
+->name('users.index');
 
-Route::get('/users/{id}', 'UsersController@show')
-    ->where('id', '[0-9]+');
+Route::get('/users/{user}', 'UsersController@show')
+    ->where('user', '[0-9]+')
+    ->name('users.show');   
 
-Route::get('/users?empty', 'UsersController@listaVacia');   
+Route::get('/users/new', 'UsersController@create')
+    ->name('users.create');
 
-Route::get('/users/new', 'UsersController@createUser');
+Route::post('/users/create', 'UsersController@store');    
 
