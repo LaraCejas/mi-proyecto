@@ -9,6 +9,6 @@
     <p>Correo electrónico: {{ $user->email }}</p>
 
     <p>
-        <a href="{{ route('users.index') }}">Regresar al listado de usuarios</a>
+        <a href="{{ url('/users') }}">Regresar</a>
     </p>
 @endsection
