@@ -16,21 +16,21 @@
             <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="name" style="color: #ff33cc">Nombre</label>
-                        <input type="text" class="form-control" style="border-color: #ff33cc">
+                        <input type="text" name="name" class="form-control" id="name" style="border-color: #ff33cc">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="lastName" style="color: #ff33cc">Apellido</label>
-                        <input type="text" class="form-control" style="border-color: #ff33cc">
+                        <input type="text" name="lastName" class="form-control" id="lastName" style="border-color: #ff33cc">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="inputEmail4" style="color: #ff33cc">Email</label>
-                        <input type="email" class="form-control" id="inputEmail4" style="border-color: #ff33cc">
+                        <label for="email" style="color: #ff33cc">Correo electronico</label>
+                        <input type="email" name="email" class="form-control" id="email" style="border-color: #ff33cc">
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="inputPassword4" style="color: #ff33cc">Contraseña</label>
-                        <input type="password" class="form-control" id="inputPassword4" style="border-color: #ff33cc">
+                        <label for="password" style="color: #ff33cc">Contraseña</label>
+                        <input type="password" name="password" class="form-control" id="password" style="border-color: #ff33cc">
                     </div>
                 </div>
 

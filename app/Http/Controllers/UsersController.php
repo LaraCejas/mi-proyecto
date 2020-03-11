@@ -34,14 +34,16 @@ class UsersController extends Controller
 
     public function store()
     {
+        
         $data = request()->all();
 
         User::create([
             'name' => $data['name'],
+            'lastName' => ['lastName'],
             'email' => $data ['email'],
             'password' => bcrypt($data['password']),
         ]);
 
-        return redirect()->route('users-index');
+        return redirect()->route('users.index');
     }
 }

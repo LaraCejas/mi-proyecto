@@ -16,6 +16,7 @@ class UsersSeeder extends Seeder
     {
         factory(User::class)->create([
             'name' => 'Lara',
+            'lastName' => 'Cejas',
             'email' => 'malaracejas@gmail.com',
             'password' => bcrypt('laravel'),
             'is_admin' => true,

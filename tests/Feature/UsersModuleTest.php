@@ -71,12 +71,14 @@ class UsersModuleTest extends TestCase
     {
         $this->post('/users', [
             'name' => 'Lara',
+            'lastName' => 'Cejas',
             'email' => 'malaracejas@gmail.com',
             'password' => 'laravel'
         ])->assertRedirect('users');
 
         $this->assertCredentials([
             'name' => 'Lara',
+            'lastName' => 'Cejas',
             'email' => 'malaracejas@gmail.com',
             'password' => 'laravel',
         ]);
