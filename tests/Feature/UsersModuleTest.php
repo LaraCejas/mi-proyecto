@@ -42,7 +42,8 @@ class UsersModuleTest extends TestCase
     function it_loads_the_users_details_page()
     {
         $user = factory(User::class)->create ([
-            'name' => 'Lara Cejas'
+            'name' => 'Lara',
+            'lastName' => 'Cejas',
         ]);
 
         $this->get('/users/'.$user->id)
@@ -63,7 +64,7 @@ class UsersModuleTest extends TestCase
     {
         $this->get('/users/new')
             ->assertStatus(200)
-            ->assertSee('Crear usuario nuevo');
+            ->assertSee('Crear usuario');
     }
 
     //** @test */
@@ -82,5 +83,105 @@ class UsersModuleTest extends TestCase
             'email' => 'malaracejas@gmail.com',
             'password' => 'laravel',
         ]);
+    }
+
+    //** @test */
+    function the_name_is_required()
+    {
+        $this->from('users/new')
+            ->post('/users', [
+                'name' => '',
+                'lastName' => 'Cejas',
+                'email' => 'malaracejas@gmail.com',
+                'password' => 'laravel'
+            ]) 
+            ->assertRedirect('users/new')
+                ->asserSessiontHasErrors(['name' => 'El nombre es obligatorio']);
+
+        $this->assertEquals(0, User::count());
+    }
+
+    //** @test */
+    function the_lastName_is_required()
+    {
+        $this->from('users/new')
+            ->post('/users', [
+                'name' => 'Lara',
+                'lastName' => '',
+                'email' => 'malaracejas@gmail.com',
+                'password' => 'laravel'
+            ]) 
+            ->assertRedirect('users/new')
+                ->asserSessiontHasErrors(['lastName']);
+
+        $this->assertEquals(0, User::count());
+    }
+
+    //** @test */
+    function the_email_is_required()
+    {
+        $this->from('users/new')
+            ->post('/users', [
+                'name' => 'Lara',
+                'lastName' => 'Cejas',
+                'email' => '',
+                'password' => 'laravel'
+            ]) 
+            ->assertRedirect('users/new')
+                ->asserSessiontHasErrors(['email']);
+
+        $this->assertEquals(0, User::count());
+    }
+
+    //** @test */
+    function the_email_must_be_valid()
+    {
+        $this->from('users/new')
+            ->post('/users', [
+                'name' => 'Lara',
+                'lastName' => 'Cejas',
+                'email' => 'correo-no-valido',
+                'password' => 'laravel'
+            ]) 
+            ->assertRedirect('users/new')
+                ->asserSessiontHasErrors(['email']);
+
+        $this->assertEquals(0, User::count());
+    }
+
+    //** @test */
+    function the_email_must_be_unique()
+    {
+        factory(User::class)->create([
+            'email' => 'malaracejas@gmail.com',
+        ]);
+
+        $this->from('users/new')
+            ->post('/users', [
+                'name' => 'Lara',
+                'lastName' => 'Cejas',
+                'email' => 'malaracejas@gmail.com',
+                'password' => 'laravel'
+            ]) 
+            ->assertRedirect('users/new')
+                ->asserSessiontHasErrors(['email']);
+
+        $this->assertEquals(1, User::count());
+    }
+
+    //** @test */
+    function the_password_is_required()
+    {
+        $this->from('users/new')
+            ->post('/users', [
+                'name' => 'Lara',
+                'lastName' => 'Cejas',
+                'email' => 'malaracejas@gmail.com',
+                'password' => ''
+            ]) 
+            ->assertRedirect('users/new')
+                ->asserSessiontHasErrors(['password']);
+
+        $this->assertEquals(0, User::count());
     }
 }

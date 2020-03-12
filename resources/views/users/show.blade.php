@@ -4,7 +4,7 @@
 
     <h1>Usuario {{ $user->id }}</h1>
  
-    <p>Nombre del usuario: {{ $user->name }}</p>
+    <p>Nombre del usuario: {{ $user->name }} {{ $user->lastName }}</p>
     <p>Correo electrónico: {{ $user->email }}</p>
 
     <p>

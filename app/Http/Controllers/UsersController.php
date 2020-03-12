@@ -34,12 +34,19 @@ class UsersController extends Controller
 
     public function store()
     {
-        
-        $data = request()->all();
+
+        $data = request()->validate([
+            'name' => 'required',
+            'lastName' => 'required',
+            'email' => ['required', 'email', 'unique:users,email'],
+            'password' => 'required',
+        ] , [
+            'name.required' => 'El nombre es obligatorio'
+        ]);
 
         User::create([
-            'name' => $data['name'],
-            'lastName' => ['lastName'],
+            'name' => $data ['name'],
+            'lastName' => $data ['lastName'],
             'email' => $data ['email'],
             'password' => bcrypt($data['password']),
         ]);

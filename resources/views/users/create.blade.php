@@ -2,6 +2,17 @@
 
 @section('title', "Crear usuario")
 
+@if ($errors->any())
+    <div class="alert alert-danger" role="alert">
+        Los campos * son obligatorios! 
+        {{--<ul>--}
+            {{--@forech ( $errors->all() as $error)--}}
+                {{--<li>{{ $error }} </li>--}}
+            {{--@endforech--}}
+        {{--</ul>--}}     
+    </div>  
+@endif
+
     <form method="POST" action="{{ url('users/create') }}">
         {!! csrf_field() !!}
 
@@ -15,22 +26,50 @@
             <div class="card-body">
             <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="name" style="color: #ff33cc">Nombre</label>
-                        <input type="text" name="name" class="form-control" id="name" style="border-color: #ff33cc">
+                        <label for="name" style="color: #ff33cc">Nombre *</label>
+                        <input type="text" name="name" class="form-control" id="name" value= "{{ old('name') }}" required 
+                        style="border-color: #ff33cc">
+                            <div class="invalid-feedback">
+                                @if($errors->has('name'))
+                                 <p>{{ $errors->first('name') }}</p>
+                                 El nombre es obligatorio
+                                @endif  
+                            </div>  
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="lastName" style="color: #ff33cc">Apellido</label>
-                        <input type="text" name="lastName" class="form-control" id="lastName" style="border-color: #ff33cc">
+                        <label for="lastName" style="color: #ff33cc">Apellido *</label>
+                        <input type="text" name="lastName" class="form-control" id="lastName" required
+                        style="border-color: #ff33cc">
+                            <div class="invalid-feedback">
+                                @if($errors->has('lastName'))
+                                 <p>{{ $errors->first('lastName') }}</p>
+                                 El apellido es obligatorio
+                                @endif  
+                            </div> 
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="email" style="color: #ff33cc">Correo electronico</label>
-                        <input type="email" name="email" class="form-control" id="email" style="border-color: #ff33cc">
+                        <label for="email" style="color: #ff33cc">Correo electronico *</label>
+                        <input type="email" name="email" class="form-control" id="email" value= "{{ old('email') }}" required 
+                        style="border-color: #ff33cc">
+                            <div class="invalid-feedback">
+                                @if($errors->has('email'))
+                                 <p>{{ $errors->first('email') }}</p>
+                                 El correo electronico es obligatorio
+                                @endif  
+                            </div> 
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="password" style="color: #ff33cc">Contraseña</label>
-                        <input type="password" name="password" class="form-control" id="password" style="border-color: #ff33cc">
+                        <label for="password" style="color: #ff33cc">Contraseña *</label>
+                        <input type="password" name="password" class="form-control" id="password" required
+                        style="border-color: #ff33cc">
+                            <div class="invalid-feedback">
+                                @if($errors->has('password'))
+                                 <p>{{ $errors->first('password') }}</p>
+                                 La contraseña es obligatoria
+                                @endif  
+                            </div> 
                     </div>
                 </div>
 

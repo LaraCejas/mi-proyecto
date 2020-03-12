@@ -7,7 +7,7 @@
     <ul>
         @forelse ($users as $user)
             <li>
-                {{ $user->name }}, ({{ $user->email }})
+                {{ $user->name }} {{ $user->lastName }}, ({{ $user->email }})
                 <a href="{{ route('users.show', $user) }}" style="color: #ff33cc">Ver detalles</a>
             </li>
         @empty

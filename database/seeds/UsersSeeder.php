@@ -22,6 +22,6 @@ class UsersSeeder extends Seeder
             'is_admin' => true,
         ]);
 
-        factory(User::class, 49)->create();
+    
     }
 }
