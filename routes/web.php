@@ -12,6 +12,11 @@ Route::get('/users/{user}', 'UsersController@show')
 
 Route::get('/users/new', 'UsersController@create')
     ->name('users.create');
+    
+Route::get('users/{user}/edit', 'UsersController@edit')
+    ->name('users.edit');
+    
+Route::put('users/{user}', 'UsersController@update');     
 
 Route::post('/users/create', 'UsersController@store');    
 

@@ -9,6 +9,7 @@
             <li>
                 {{ $user->name }} {{ $user->lastName }}, ({{ $user->email }})
                 <a href="{{ route('users.show', $user) }}" style="color: #ff33cc">Ver detalles</a>
+                <a href="{{ route('users.edit', $user) }}" style="color: #ff33cc">Editar usuario</a>
             </li>
         @empty
             <li>No hay usuarios registrados.</li>

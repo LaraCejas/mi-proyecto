@@ -9,7 +9,5 @@
 
     <p>
         <a href="{{ route('users.index') }}" style="color: #ff33cc">Regresar a la lista de usuarios</a>
-        <br>
-        <br>
-        <button type="button" class="btn-btn rounded-pill" style="background-color: #ff33cc">Eliminar usuario</button>
+        
     </p>
