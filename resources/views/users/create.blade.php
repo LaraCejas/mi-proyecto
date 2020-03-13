@@ -3,14 +3,12 @@
 @section('title', "Crear usuario")
 
 @if ($errors->any())
-    <div class="alert alert-danger" role="alert">
-        Los campos * son obligatorios! 
-        {{--<ul>--}
-            {{--@forech ( $errors->all() as $error)--}}
-                {{--<li>{{ $error }} </li>--}}
-            {{--@endforech--}}
-        {{--</ul>--}}     
-    </div>  
+        <div class="alert alert-danger">
+            <h6>Por favor corrige los errores debajo:</h6>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+        </div>
 @endif
 
     <form method="POST" action="{{ url('users/create') }}">

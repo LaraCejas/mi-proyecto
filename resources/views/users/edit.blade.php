@@ -3,15 +3,15 @@
 @section('title', "Editar usuario")
 
 @if ($errors->any())
-    <div class="alert alert-danger" role="alert">
-        Los campos * son obligatorios! 
-        {{--<ul>--}
-            {{--@forech ( $errors->all() as $error)--}}
-                {{--<li>{{ $error }} </li>--}}
-            {{--@endforech--}}
-        {{--</ul>--}}     
-    </div>  
-@endif
+        <div class="alert alert-danger">
+            <h6>Por favor corrige los errores debajo:</h6>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
     <form method="POST" action="{{ url("users/{$user->id}") }}">
         {{ method_field('PUT') }}
@@ -27,7 +27,7 @@
             <div class="card-body">
             <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="name" style="color: #ff33cc">Nombre *</label>
+                        <label for="name" style="color: #ff33cc">Nombre</label>
                         <input type="text" name="name" class="form-control" id="name" value= "{{ old('name', $user->name) }}" required 
                         style="border-color: #8f00b3">
                             <div class="invalid-feedback">
@@ -38,7 +38,7 @@
                             </div>  
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="lastName" style="color: #ff33cc">Apellido *</label>
+                        <label for="lastName" style="color: #ff33cc">Apellido</label>
                         <input type="text" name="lastName" class="form-control" id="lastName" value= "{{ old('lastName', $user->lastName) }}" required
                         style="border-color: #8f00b3">
                             <div class="invalid-feedback">
@@ -51,7 +51,7 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="email" style="color: #8f00b3">Correo electronico *</label>
+                        <label for="email" style="color: #8f00b3">Correo electronico</label>
                         <input type="email" name="email" class="form-control" id="email" value= "{{ old('email', $user->email) }}" required 
                         style="border-color: #ff33cc">
                             <div class="invalid-feedback">
@@ -62,7 +62,7 @@
                             </div> 
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="password" style="color: #8f00b3">Contraseña *</label>
+                        <label for="password" style="color: #8f00b3">Contraseña</label>
                         <input type="password" name="password" class="form-control" id="password" required
                         style="border-color: #ff33cc">
                             <div class="invalid-feedback">

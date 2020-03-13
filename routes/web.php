@@ -18,5 +18,8 @@ Route::get('users/{user}/edit', 'UsersController@edit')
     
 Route::put('users/{user}', 'UsersController@update');     
 
-Route::post('/users/create', 'UsersController@store');    
+Route::post('/users/create', 'UsersController@store');
+
+Route::delete('users/{user}', 'UsersController@destroy')
+    ->name('users.destroy');
 
