@@ -18,13 +18,15 @@
         <div class="card shadow p-3 my-5 bg-white rounded">
             <div class="card-header">
                 <div class="col-md-12">
-                    <h1 style="color: #ff33cc">Crear usuario</h1>
+                    <div class="text-center">
+                        <h1 style="color: #8f00b3">Crear usuario</h1>
+                    </div>
                 </div>
             </div>
             <div class="card-body">
             <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="name" style="color: #ff33cc">Nombre *</label>
+                        <label for="name">Nombre</label>
                         <input type="text" name="name" class="form-control" id="name" value= "{{ old('name') }}" required 
                         style="border-color: #ff33cc">
                             <div class="invalid-feedback">
@@ -35,7 +37,7 @@
                             </div>  
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="lastName" style="color: #ff33cc">Apellido *</label>
+                        <label for="lastName">Apellido</label>
                         <input type="text" name="lastName" class="form-control" id="lastName" required
                         style="border-color: #ff33cc">
                             <div class="invalid-feedback">
@@ -48,7 +50,7 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="email" style="color: #ff33cc">Correo electronico *</label>
+                        <label for="email">Correo electronico</label>
                         <input type="email" name="email" class="form-control" id="email" value= "{{ old('email') }}" required 
                         style="border-color: #ff33cc">
                             <div class="invalid-feedback">
@@ -59,7 +61,13 @@
                             </div> 
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="password" style="color: #ff33cc">Contraseña *</label>
+                        <label for="password">Contraseña</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupPrepend3" 
+                            style="border-color: #ff33cc; background-color: #ffa9e9; color: #ffffff;"
+                            ><span class="oi oi-key" color: #ff33cc></span></span>
+                            </div>
                         <input type="password" name="password" class="form-control" id="password" required
                         style="border-color: #ff33cc">
                             <div class="invalid-feedback">
@@ -67,18 +75,17 @@
                                  <p>{{ $errors->first('password') }}</p>
                                  La contraseña es obligatoria
                                 @endif  
+                                </div>
                             </div> 
                     </div>
                 </div>
 
             </div>
-            <div class="card-footer text-muted">
-
-                <button type="submit" class="btn-btn rounded-pill" style="background-color: #ff33cc">Crear usuario</button>
-                <p>
-                    <a href="{{ route('users.index') }}" style="color: #ff33cc">Regresar a la lista de usuarios</a>
-                </p>
-     
+            <div class="card-footer">
+                <div class="row justify-content-center">
+                    <a href="{{ route('users.index') }}" class="btn btn_link" style="color: #ff33cc"><span class="oi oi-x"></span></a>
+                    <button type="submit" class="btn btn-link" style="color: #ff33cc"><span class="oi oi-check"></span></button>
+                </div>        
             </div>
         </div>  
         </div> 
