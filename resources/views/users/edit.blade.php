@@ -21,7 +21,9 @@
         <div class="card shadow p-3 my-5 bg-white rounded">
             <div class="card-header">
                 <div class="col-md-12">
+                <div class="text-center">
                     <h1 style="color: #8f00b3">Editar usuario</h1>
+                </div>
                 </div>
             </div>
             <div class="card-body">

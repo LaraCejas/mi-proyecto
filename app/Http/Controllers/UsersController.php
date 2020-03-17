@@ -39,7 +39,7 @@ class UsersController extends Controller
             'name' => 'required',
             'lastName' => 'required',
             'email' => ['required', 'email', 'unique:users,email'],
-            'password' => 'required',
+            'password' => 'required|min:8|max:20',
         ] , [
             'name.required' => 'El nombre es obligatorio'
         ]);
@@ -65,7 +65,7 @@ class UsersController extends Controller
             'name' => 'required',
             'lastName' => 'required',
             'email' => 'required|email|unique:users,email,'.$user->id,
-            'password' => 'required|min:8|max:20',
+            'password' => 'required',
         ]);
 
         if($data['password' != null]) {
