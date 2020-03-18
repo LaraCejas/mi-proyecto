@@ -65,14 +65,8 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="password" style="color: #8f00b3">Contraseña</label>
-                        <input type="password" name="password" class="form-control" id="password" required
+                        <input type="password" name="password" class="form-control" id="password"
                         style="border-color: #ff33cc">
-                            <div class="invalid-feedback">
-                                @if($errors->has('password'))
-                                 <p>{{ $errors->first('password') }}</p>
-                                 La contraseña es obligatoria
-                                @endif  
-                            </div> 
                     </div>
                 </div>
 

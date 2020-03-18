@@ -2,13 +2,10 @@
 
 @section('title', "Crear usuario")
 
-@if ($errors->any())
-        <div class="alert alert-danger">
-            <h6>Por favor corrige los errores debajo:</h6>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-        </div>
+@if ($errors->has('name'))
+<div class="invalid-feedback">
+{{ $errors->first('name') }}
+</div>
 @endif
 
     <form method="POST" action="{{ url('users/create') }}">
@@ -29,12 +26,7 @@
                         <label for="name">Nombre</label>
                         <input type="text" name="name" class="form-control" id="name" value= "{{ old('name') }}" required 
                         style="border-color: #ff33cc">
-                            <div class="invalid-feedback">
-                                @if($errors->has('name'))
-                                 <p>{{ $errors->first('name') }}</p>
-                                 El nombre es obligatorio
-                                @endif  
-                            </div>  
+                            <div class="invalid-feedback">{{ $errors->first('name') }}</div>  
                     </div>
                     <div class="form-group col-md-6">
                         <label for="lastName">Apellido</label>

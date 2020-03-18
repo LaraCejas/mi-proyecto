@@ -342,7 +342,7 @@ class UsersModuleTest extends TestCase
                 'name' => 'Lara',
                 'lastName' => 'Cejas',
                 'email' => 'malaracejas@gmail.com',
-                'password' => '',
+                'password' => $oldPassword,
                 ]);
     }
 
