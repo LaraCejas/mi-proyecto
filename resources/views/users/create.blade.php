@@ -2,14 +2,33 @@
 
 @section('title', "Crear usuario")
 
-@if ($errors->has('name'))
-<div class="invalid-feedback">
-{{ $errors->first('name') }}
-</div>
-@endif
+
+@error('name')
+    <div class="invalid-feedback">
+        El nombre es obligatorio
+    </div>
+@enderror
+
+@error('lastName')
+    <div class="invalid-feedback">
+        El apellido es obligatorio
+    </div>
+@enderror
+
+@error('email')
+    <div class="invalid-feedback">
+        El correo electronico es obligatorio
+    </div>
+@enderror
+
+@error('password')
+    <div class="invalid-feedback">
+        La contraseña es obligatoria
+    </div>
+@enderror
 
     <form method="POST" action="{{ url('users/create') }}">
-        {!! csrf_field() !!}
+        {{ csrf_field() }}
 
     <div class="row p-4 justify-content-center" style="height: 100%;" id='background'>
         <div class="card shadow p-3 my-5 bg-white rounded">
@@ -26,18 +45,13 @@
                         <label for="name">Nombre</label>
                         <input type="text" name="name" class="form-control" id="name" value= "{{ old('name') }}" required 
                         style="border-color: #ff33cc">
-                            <div class="invalid-feedback">{{ $errors->first('name') }}</div>  
+                              
                     </div>
                     <div class="form-group col-md-6">
                         <label for="lastName">Apellido</label>
                         <input type="text" name="lastName" class="form-control" id="lastName" required
                         style="border-color: #ff33cc">
-                            <div class="invalid-feedback">
-                                @if($errors->has('lastName'))
-                                 <p>{{ $errors->first('lastName') }}</p>
-                                 El apellido es obligatorio
-                                @endif  
-                            </div> 
+                            
                     </div>
                 </div>
                 <div class="form-row">
@@ -45,12 +59,7 @@
                         <label for="email">Correo electronico</label>
                         <input type="email" name="email" class="form-control" id="email" value= "{{ old('email') }}" required 
                         style="border-color: #ff33cc">
-                            <div class="invalid-feedback">
-                                @if($errors->has('email'))
-                                 <p>{{ $errors->first('email') }}</p>
-                                 El correo electronico es obligatorio
-                                @endif  
-                            </div> 
+                             
                     </div>
                     <div class="form-group col-md-6">
                         <label for="password">Contraseña</label>
@@ -62,12 +71,7 @@
                             </div>
                         <input type="password" name="password" class="form-control" id="password" required
                         style="border-color: #ff33cc">
-                            <div class="invalid-feedback">
-                                @if($errors->has('password'))
-                                 <p>{{ $errors->first('password') }}</p>
-                                 La contraseña es obligatoria
-                                @endif  
-                                </div>
+                            
                             </div> 
                     </div>
                 </div>
@@ -81,8 +85,5 @@
             </div>
         </div>  
         </div> 
-    </form>
-
-     
-
+    </form>  
 
