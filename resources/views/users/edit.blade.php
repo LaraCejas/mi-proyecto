@@ -78,12 +78,12 @@
 
             </div>
             <div class="card-footer text-muted">
-
-                <button type="submit" class="btn btn-dark rounded-pill" style="color: #ff33cc">Guardar cambios</button>
+            <div class="d-flex justify-content-between ">
+                <a href="{{ route('users.index') }}" style="color: #8f00b3; margin: auto">Regresar a la lista de usuarios</a>
                 <p>
-                    <a href="{{ route('users.index') }}" style="color: #8f00b3">Regresar a la lista de usuarios</a>
+                <button type="submit" class="btn btn-dark rounded-pill" style="color: #ff33cc;">Guardar cambios</button>
                 </p>
-     
+            </div>
             </div>
         </div>  
         </div> 

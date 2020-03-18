@@ -65,7 +65,7 @@ class UsersController extends Controller
             'name' => 'required',
             'lastName' => 'required',
             'email' => 'required|email|unique:users,email,'.$user->id,
-            'password' => 'required',
+            'password' => '',
         ]);
 
         if($data['password' != null]) {
