@@ -68,7 +68,7 @@ class UsersController extends Controller
             'password' => '',
         ]);
 
-        if($data['password' != null]) {
+        if($data['password'] != null) {
             $data['password'] = bcrypt($data['password']);
         } else {
             unset($data['password']);
