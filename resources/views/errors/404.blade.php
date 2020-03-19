@@ -2,4 +2,4 @@
 
 @section('title', "Página no encontrada")
 
-<H1>Página no encontrada</H1>
+<Img src="../images/error-404.png" width="100%" >
