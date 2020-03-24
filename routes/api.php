@@ -23,8 +23,18 @@ Route::get('users', 'UsersController@index')
 Route::post('users', 'UsersController@store')
     ->name('storeUsers');
 
+Route::get('/users/{user}', 'UsersController@show')
+    ->where('user', '[0-9]+')
+    ->name('showUsers');
+
+Route::get('/users/new', 'UsersController@create')
+    ->name('createUsers');    
+
 Route::get('users/{user}', 'UsersController@edit')
     ->name('editUsers');
 
 Route::post('users/{user}', 'UsersController@update')
     ->name('updateUsers');
+
+Route::delete('users/{user}', 'UsersController@destroy')
+    ->name('destroyUsers');  

@@ -2,11 +2,11 @@
 
 @section('title', "Editar usuario")
 
-@if ($errors->any())
+@if ($errors ?? ''->any())
         <div class="alert alert-danger">
             <h6>Por favor corrige los errores debajo:</h6>
             <ul>
-                @foreach ($errors->all() as $error)
+                @foreach ($errors ?? ''->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
             </ul>
@@ -33,8 +33,8 @@
                         <input type="text" name="name" class="form-control" id="name" value= "{{ old('name', $user->name) }}" required 
                         style="border-color: #8f00b3">
                             <div class="invalid-feedback">
-                                @if($errors->has('name'))
-                                 <p>{{ $errors->first('name') }}</p>
+                                @if($errors ?? ''->has('name'))
+                                 <p>{{ $errors ?? ''->first('name') }}</p>
                                  El nombre es obligatorio
                                 @endif  
                             </div>  
@@ -44,8 +44,8 @@
                         <input type="text" name="lastName" class="form-control" id="lastName" value= "{{ old('lastName', $user->lastName) }}" required
                         style="border-color: #8f00b3">
                             <div class="invalid-feedback">
-                                @if($errors->has('lastName'))
-                                 <p>{{ $errors->first('lastName') }}</p>
+                                @if($errors ?? ''->has('lastName'))
+                                 <p>{{ $errors ?? ''->first('lastName') }}</p>
                                  El apellido es obligatorio
                                 @endif  
                             </div> 
@@ -57,8 +57,8 @@
                         <input type="email" name="email" class="form-control" id="email" value= "{{ old('email', $user->email) }}" required 
                         style="border-color: #ff33cc">
                             <div class="invalid-feedback">
-                                @if($errors->has('email'))
-                                 <p>{{ $errors->first('email') }}</p>
+                                @if($errors ?? ''->has('email'))
+                                 <p>{{ $errors ?? ''->first('email') }}</p>
                                  El correo electronico es obligatorio
                                 @endif  
                             </div> 
