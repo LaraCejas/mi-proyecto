@@ -11,8 +11,8 @@ body{
 </style>
 
     <div class="text" style="margin-top: 300px; margin-left: 310px; font-family: Arial;">
-        <h3>La página que intentas encontrar</h3>
-        <h3>no esta en el servidor(Error 404)</h3>
+        <h3 style="color: grey">La página que intentas encontrar</h3>
+        <h3 style="color: grey">no esta en el servidor(Error 404)</h3>
     </div>
     <div class="text" style="margin-left: 350px;">
         <strong>
